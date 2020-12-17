@@ -10,4 +10,5 @@ this project have separate to 4 main sector:
 
 for the testData folder is my test plan
 
+below url is my localhost:
 http://localhost:8080/api/subscription
