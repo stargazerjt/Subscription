@@ -1,0 +1,7 @@
+{
+    "invAmt": 500,
+    "subscriptionType": "WEEKLY",
+    "dayOfWeekMonthly": "SUNDAY",
+    "startDate": "2020-05-17",
+    "endDate": "2020-12-31"
+}
