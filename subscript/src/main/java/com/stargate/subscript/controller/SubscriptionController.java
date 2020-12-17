@@ -56,7 +56,7 @@ public class SubscriptionController {
 			startInvDate=calcInvDt(model.getStartDate(), model.getDayOfWeekMonthly());
 
 			for(int i=0;i<=diff.getMonths();i++) {
-				if(startInvDate.isBefore(dueDate)) {
+				if(startInvDate.isBefore(dueDate.plusDays(1))) {
 					invDates.add(startInvDate.format(formatters));
 				}
 				startInvDate=startInvDate.plusMonths(1);
@@ -126,20 +126,25 @@ public class SubscriptionController {
 	}
 	
 	private LocalDate calcInvDt(Date startDate, int monOfDay) {
-
-		LocalDate startDt=LocalDate.of(Integer.parseInt(sdfYr.format(startDate)), 
-				Integer.parseInt(sdfMon.format(startDate)), 
-				Integer.parseInt(sdfDay.format(startDate)));
-
-		LocalDate invDt=LocalDate.of(Integer.parseInt(sdfYr.format(startDate)), 
-				Integer.parseInt(sdfMon.format(startDate)), 
-				monOfDay);
-		
-		if(startDt.compareTo(invDt)<0)	{
-			return invDt;
-		}
-		else {	
-			return invDt.plusMonths(1);
+		try {
+			LocalDate startDt=LocalDate.of(Integer.parseInt(sdfYr.format(startDate)), 
+					Integer.parseInt(sdfMon.format(startDate)), 
+					Integer.parseInt(sdfDay.format(startDate)));
+	
+			LocalDate invDt=LocalDate.of(Integer.parseInt(sdfYr.format(startDate)), 
+					Integer.parseInt(sdfMon.format(startDate)), 
+					monOfDay);
+			
+			if(startDt.compareTo(invDt)<0)	{
+				return invDt;
+			}
+			else {	
+				return invDt.plusMonths(1);
+			}
+		}catch(Exception e) {
+			String msg="Calculation Invoice Date Fail: Day of Month have invalid value.";
+			throw new BadRequestException(Response.status(Status.BAD_REQUEST)
+                .entity(msg).build());
 		}
 	}
 }
