@@ -1,0 +1,11 @@
+com\stargate\subscript\services\impl\SubscriptionConverter.class
+com\stargate\subscript\SwaggerConfiguration.class
+com\stargate\subscript\models\SubscriptionResponse.class
+com\stargate\subscript\services\ModelConverter.class
+com\stargate\subscript\SubscriptApplication.class
+com\stargate\subscript\api\SubscriptionApi.class
+com\stargate\subscript\JerseyConfiguration.class
+com\stargate\subscript\models\SubscriptionRequest.class
+com\stargate\subscript\controller\SubscriptionController.class
+com\stargate\subscript\models\SubscriptInvModel.class
+com\stargate\subscript\services\ModelConverter$1.class
